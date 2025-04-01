@@ -25,15 +25,21 @@ function ImageSearchApp() {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/classify-image`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
-      setClassificationResults(response.data);
-    } catch (error) {
-      console.error('Classification error:', error);
-      alert('Image classification failed');
-    }
-  };
+  // Create formData and append image data
+  const formData = new FormData();
+  formData.append("image", yourImageFile); // Ensure `yourImageFile` contains the actual image file
+
+  // Send request with form-data headers
+  const response = await axios.post("/api/proxy", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+  setClassificationResults(response.data);
+} catch (error) {
+  console.error("Classification error:", error);
+  alert("Image classification failed");
+}
+
 
   const searchSimilarImages = async () => {
     if (!selectedFile) {
