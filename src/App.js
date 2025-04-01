@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://0.0.0.0:7860';
 
 function ImageSearchApp() {
   const [selectedFile, setSelectedFile] = useState(null);
